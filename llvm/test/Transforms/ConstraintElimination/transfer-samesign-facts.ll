@@ -309,8 +309,7 @@ define i1 @samesign_flipped_signedness_1(i8 %a, i8 %b)  {
 ; CHECK-NEXT:    [[CMP_UGT:%.*]] = icmp ugt i8 [[A:%.*]], [[B:%.*]]
 ; CHECK-NEXT:    br i1 [[CMP_UGT]], label [[GREATER:%.*]], label [[EXIT:%.*]]
 ; CHECK:       greater:
-; CHECK-NEXT:    [[CMP_SGT:%.*]] = icmp samesign sgt i8 [[A]], [[B]]
-; CHECK-NEXT:    ret i1 [[CMP_SGT]]
+; CHECK-NEXT:    ret i1 true
 ; CHECK:       exit:
 ; CHECK-NEXT:    ret i1 false
 ;
@@ -332,8 +331,7 @@ define i1 @samesign_flipped_signedness_2(i32 %a) {
 ; CHECK:       for.cond.preheader:
 ; CHECK-NEXT:    ret i1 false
 ; CHECK:       if.else:
-; CHECK-NEXT:    [[CMP_UGT:%.*]] = icmp samesign ugt i32 [[A]], -65
-; CHECK-NEXT:    ret i1 [[CMP_UGT]]
+; CHECK-NEXT:    ret i1 true
 ;
   %cmp_ult = icmp samesign ult i32 %a, 65
   br i1 %cmp_ult, label %for.cond.preheader, label %if.else
