@@ -303,3 +303,45 @@ define i1 @ugt_assumed_positive_values(i8 %a, i8 %b) {
 
   ret i1 %result
 }
+
+define i1 @samesign_flipped_signedness_1(i8 %a, i8 %b)  {
+; CHECK-LABEL: @samesign_flipped_signedness_1(
+; CHECK-NEXT:    [[CMP_UGT:%.*]] = icmp ugt i8 [[A:%.*]], [[B:%.*]]
+; CHECK-NEXT:    br i1 [[CMP_UGT]], label [[GREATER:%.*]], label [[EXIT:%.*]]
+; CHECK:       greater:
+; CHECK-NEXT:    [[CMP_SGT:%.*]] = icmp samesign sgt i8 [[A]], [[B]]
+; CHECK-NEXT:    ret i1 [[CMP_SGT]]
+; CHECK:       exit:
+; CHECK-NEXT:    ret i1 false
+;
+  %cmp_ugt = icmp ugt i8 %a, %b
+  br i1 %cmp_ugt, label %greater, label %exit
+
+greater:
+  %cmp_sgt = icmp samesign sgt i8 %a, %b
+  ret i1 %cmp_sgt
+
+exit:
+  ret i1 false
+}
+
+define i1 @samesign_flipped_signedness_2(i32 %a) {
+; CHECK-LABEL: @samesign_flipped_signedness_2(
+; CHECK-NEXT:    [[CMP_ULT:%.*]] = icmp samesign ult i32 [[A:%.*]], 65
+; CHECK-NEXT:    br i1 [[CMP_ULT]], label [[FOR_COND_PREHEADER:%.*]], label [[IF_ELSE:%.*]]
+; CHECK:       for.cond.preheader:
+; CHECK-NEXT:    ret i1 false
+; CHECK:       if.else:
+; CHECK-NEXT:    [[CMP_UGT:%.*]] = icmp samesign ugt i32 [[A]], -65
+; CHECK-NEXT:    ret i1 [[CMP_UGT]]
+;
+  %cmp_ult = icmp samesign ult i32 %a, 65
+  br i1 %cmp_ult, label %for.cond.preheader, label %if.else
+
+for.cond.preheader:
+  ret i1 false
+
+if.else:
+  %cmp_ugt = icmp samesign ugt i32 %a, -65
+  ret i1 %cmp_ugt
+}
