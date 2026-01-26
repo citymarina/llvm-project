@@ -106,6 +106,11 @@ static cl::opt<std::string>
     LTOStatsFile("lto-stats-file",
                  cl::desc("Save statistics to the specified file"), cl::Hidden);
 
+cl::opt<std::string>
+    LTOStackUsageFile("lto-stack-usage-file",
+                      cl::desc("Output filename for stack usage information"),
+                      cl::value_desc("filename"), cl::Hidden);
+
 static cl::opt<std::string> AIXSystemAssemblerPath(
     "lto-aix-system-assembler",
     cl::desc("Path to a system assembler, picked up on AIX only"),
@@ -638,6 +643,7 @@ bool LTOCodeGenerator::compileOptimized(AddStreamFn AddStream,
   ModuleSummaryIndex CombinedIndex(false);
 
   Config.CodeGenOnly = true;
+  Config.StackUsageFile = LTOStackUsageFile;
   Error Err = backend(Config, AddStream, ParallelismLevel, *MergedModule,
                       CombinedIndex);
   assert(!Err && "unexpected code-generation failure");

@@ -202,6 +202,10 @@ static cl::opt<bool>
 static cl::opt<std::string>
     StatsFile("stats-file", cl::desc("Filename to write statistics to"));
 
+static cl::opt<std::string>
+    StackUsageFileFilename("lto-stack-usage-file",
+                           cl::desc("Filename to write stack usage info to"));
+
 static cl::list<std::string>
     PassPlugins("load-pass-plugin",
                 cl::desc("Load passes from plugin library"));
@@ -390,6 +394,7 @@ static int run(int argc, char **argv) {
   Conf.OverrideTriple = OverrideTriple;
   Conf.DefaultTriple = DefaultTriple;
   Conf.StatsFile = StatsFile;
+  Conf.StackUsageFile = StackUsageFileFilename;
   Conf.PTO.LoopVectorization = Conf.OptLevel > 1;
   Conf.PTO.SLPVectorization = Conf.OptLevel > 1;
 

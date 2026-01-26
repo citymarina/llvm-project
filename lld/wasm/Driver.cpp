@@ -573,6 +573,7 @@ static void readConfigs(opt::InputArgList &args) {
     error("invalid codegen optimization level for LTO: " + Twine(ltoCgo));
   ctx.arg.ltoPartitions = args::getInteger(args, OPT_lto_partitions, 1);
   ctx.arg.ltoObjPath = args.getLastArgValue(OPT_lto_obj_path_eq);
+  ctx.arg.ltoStackUsageFile = args.getLastArgValue(OPT_lto_stack_usage_file_eq);
   ctx.arg.ltoDebugPassManager = args.hasArg(OPT_lto_debug_pass_manager);
   ctx.arg.mapFile = args.getLastArgValue(OPT_Map);
   ctx.arg.optimize = args::getInteger(args, OPT_O, 1);

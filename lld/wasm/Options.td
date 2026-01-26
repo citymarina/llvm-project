@@ -304,6 +304,8 @@ def lto_CGO: JJ<"lto-CGO">, MetaVarName<"<cgopt-level>">,
 def lto_partitions: JJ<"lto-partitions=">,
   HelpText<"Number of LTO codegen partitions">;
 def lto_obj_path_eq: JJ<"lto-obj-path=">;
+def lto_stack_usage_file_eq: JJ<"lto-stack-usage-file=">,
+  HelpText<"Stack usage output file path for LTO">;
 def disable_verify: F<"disable-verify">;
 def save_temps: F<"save-temps">, HelpText<"Save intermediate LTO compilation results">;
 def thinlto_cache_dir: JJ<"thinlto-cache-dir=">,

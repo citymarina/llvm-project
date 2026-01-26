@@ -448,6 +448,9 @@ static void codegen(const Config &Conf, TargetMachine *TM,
                          EC.message());
   }
 
+  if (!Conf.StackUsageFile.empty())
+    TM->Options.StackUsageFile = Conf.StackUsageFile;
+
   Expected<std::unique_ptr<CachedFileStream>> StreamOrErr =
       AddStream(Task, Mod.getModuleIdentifier());
   if (Error Err = StreamOrErr.takeError())

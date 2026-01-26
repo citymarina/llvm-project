@@ -1469,6 +1469,7 @@ static void readConfigs(Ctx &ctx, opt::InputArgList &args) {
   ctx.arg.ltoObjPath = args.getLastArgValue(OPT_lto_obj_path_eq);
   ctx.arg.ltoPartitions = args::getInteger(args, OPT_lto_partitions, 1);
   ctx.arg.ltoSampleProfile = args.getLastArgValue(OPT_lto_sample_profile);
+  ctx.arg.ltoStackUsageFile = args.getLastArgValue(OPT_lto_stack_usage_file);
   ctx.arg.ltoBBAddrMap =
       args.hasFlag(OPT_lto_basic_block_address_map,
                    OPT_no_lto_basic_block_address_map, false);

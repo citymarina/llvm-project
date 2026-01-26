@@ -308,6 +308,9 @@ defm fat_lto_objects: B<"fat-lto-objects",
 def lto_obj_path : P<
     "lto-obj-path",
     "output native object for merged LTO unit to this path">;
+def lto_stack_usage_file : P<
+    "lto-stack-usage-file",
+    "output stack usage information for LTO">;
 def lto_cs_profile_generate: F<"lto-cs-profile-generate">,
     HelpText<"Perform context sensitive PGO instrumentation">;
 def lto_cs_profile_file : P<"lto-cs-profile-file",

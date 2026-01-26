@@ -110,6 +110,7 @@ struct Config {
 
   llvm::StringRef entry;
   llvm::StringRef ltoObjPath;
+  llvm::StringRef ltoStackUsageFile;
   llvm::StringRef mapFile;
   llvm::StringRef outputFile;
   llvm::StringRef soName;

@@ -2209,6 +2209,7 @@ void LinkerDriver::linkerMain(ArrayRef<const char *> argsArr) {
   config->thinLTOObjectSuffixReplace =
       getOldNewOptions(ctx, args, OPT_thinlto_object_suffix_replace);
   config->ltoObjPath = args.getLastArgValue(OPT_lto_obj_path);
+  config->ltoStackUsageFile = args.getLastArgValue(OPT_lto_stack_usage_file);
   config->ltoCSProfileGenerate = args.hasArg(OPT_lto_cs_profile_generate);
   config->ltoCSProfileFile = args.getLastArgValue(OPT_lto_cs_profile_file);
   config->ltoSampleProfileName = args.getLastArgValue(OPT_lto_sample_profile);

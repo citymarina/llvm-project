@@ -122,6 +122,9 @@ static lto::Config createConfig(Ctx &ctx) {
   // Set up output file to emit statistics.
   c.StatsFile = std::string(ctx.arg.optStatsFilename);
 
+  // Set up output file for stack usage.
+  c.StackUsageFile = std::string(ctx.arg.ltoStackUsageFile);
+
   c.SampleProfile = std::string(ctx.arg.ltoSampleProfile);
   for (StringRef pluginFn : ctx.arg.passPlugins)
     c.PassPlugins.push_back(std::string(pluginFn));

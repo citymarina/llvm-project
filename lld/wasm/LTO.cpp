@@ -56,6 +56,7 @@ static lto::Config createConfig() {
   c.CGOptLevel = ctx.arg.ltoCgo;
   c.DebugPassManager = ctx.arg.ltoDebugPassManager;
   c.AlwaysEmitRegularLTOObj = !ctx.arg.ltoObjPath.empty();
+  c.StackUsageFile = std::string(ctx.arg.ltoStackUsageFile);
 
   if (auto relocModel = getRelocModelFromCMModel())
     c.RelocModel = *relocModel;
