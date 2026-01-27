@@ -106,11 +106,6 @@ static cl::opt<std::string>
     LTOStatsFile("lto-stats-file",
                  cl::desc("Save statistics to the specified file"), cl::Hidden);
 
-cl::opt<std::string>
-    LTOStackUsageFile("lto-stack-usage-file",
-                      cl::desc("Output filename for stack usage information"),
-                      cl::value_desc("filename"), cl::Hidden);
-
 static cl::opt<std::string> AIXSystemAssemblerPath(
     "lto-aix-system-assembler",
     cl::desc("Path to a system assembler, picked up on AIX only"),
@@ -123,6 +118,9 @@ static cl::opt<bool>
 static cl::opt<std::string>
     LTOCSIRProfile("cs-profile-path",
                    cl::desc("Context sensitive profile file path"));
+
+extern cl::opt<std::string> LTOStackUsageFile;
+
 } // namespace llvm
 
 LTOCodeGenerator::LTOCodeGenerator(LLVMContext &Context)

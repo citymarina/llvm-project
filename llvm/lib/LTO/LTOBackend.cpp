@@ -82,6 +82,11 @@ static cl::list<std::string>
 
 namespace llvm {
 extern cl::opt<bool> NoPGOWarnMismatch;
+
+cl::opt<std::string>
+    LTOStackUsageFile("lto-stack-usage-file",
+                      cl::desc("Output filename for stack usage information"),
+                      cl::value_desc("filename"), cl::Hidden);
 }
 
 [[noreturn]] static void reportOpenError(StringRef Path, Twine Msg) {
