@@ -2,7 +2,7 @@
 
 ; RUN: rm -rf %t; mkdir %t
 ; RUN: llvm-as %s -o %t/test.o
-; RUN: %lld %t/test.o -o %t/test -lto_stack_usage_file %t/test.su
+; RUN: %lld %t/test.o -o %t/test -mllvm -stack-usage-file=%t/test.su
 ; RUN: FileCheck --input-file=%t/test.su %s
 
 target triple = "x86_64-apple-macosx10.15.0"

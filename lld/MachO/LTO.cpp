@@ -61,7 +61,6 @@ static lto::Config createConfig() {
   c.DisableVerify = config->disableVerify;
   c.OptLevel = config->ltoo;
   c.CGOptLevel = config->ltoCgo;
-  c.StackUsageFile = std::string(config->ltoStackUsageFile);
   if (config->saveTemps)
     checkError(c.addSaveTemps(config->outputFile.str() + ".",
                               /*UseInputModulePath=*/true));

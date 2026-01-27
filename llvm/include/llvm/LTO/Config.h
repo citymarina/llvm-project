@@ -179,9 +179,6 @@ struct Config {
   /// Statistics output file path.
   std::string StatsFile;
 
-  /// Stack usage output file path.
-  std::string StackUsageFile;
-
   /// Specific thinLTO modules to compile.
   std::vector<std::string> ThinLTOModulesToCompile;
 

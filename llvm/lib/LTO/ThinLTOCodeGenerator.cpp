@@ -79,7 +79,6 @@ extern cl::opt<bool> RemarksWithHotness;
 extern cl::opt<std::optional<uint64_t>, false, remarks::HotnessThresholdParser>
     RemarksHotnessThreshold;
 extern cl::opt<std::string> RemarksFormat;
-extern cl::opt<std::string> LTOStackUsageFile;
 }
 
 // Default to using all available threads in the system, but using only one
@@ -961,10 +960,6 @@ void ThinLTOCodeGenerator::run() {
     if (llvm::timeTraceProfilerEnabled())
       llvm::timeTraceProfilerEnd();
   });
-
-  if (!LTOStackUsageFile.empty())
-    TMBuilder.Options.StackUsageFile = LTOStackUsageFile;
-
   // Prepare the resulting object vector
   assert(ProducedBinaries.empty() && "The generator should not be reused");
   if (SavedObjectsDirectoryPath.empty())

@@ -118,9 +118,6 @@ static cl::opt<bool>
 static cl::opt<std::string>
     LTOCSIRProfile("cs-profile-path",
                    cl::desc("Context sensitive profile file path"));
-
-extern cl::opt<std::string> LTOStackUsageFile;
-
 } // namespace llvm
 
 LTOCodeGenerator::LTOCodeGenerator(LLVMContext &Context)
@@ -641,7 +638,6 @@ bool LTOCodeGenerator::compileOptimized(AddStreamFn AddStream,
   ModuleSummaryIndex CombinedIndex(false);
 
   Config.CodeGenOnly = true;
-  Config.StackUsageFile = LTOStackUsageFile;
   Error Err = backend(Config, AddStream, ParallelismLevel, *MergedModule,
                       CombinedIndex);
   assert(!Err && "unexpected code-generation failure");

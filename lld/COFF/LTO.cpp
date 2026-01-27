@@ -83,7 +83,6 @@ lto::Config BitcodeCompiler::createConfig() {
   c.RunCSIRInstr = ctx.config.ltoCSProfileGenerate;
   c.PGOWarnMismatch = ctx.config.ltoPGOWarnMismatch;
   c.SampleProfile = ctx.config.ltoSampleProfileName;
-  c.StackUsageFile = std::string(ctx.config.ltoStackUsageFile);
   c.TimeTraceEnabled = ctx.config.timeTraceEnabled;
   c.TimeTraceGranularity = ctx.config.timeTraceGranularity;
 

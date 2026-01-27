@@ -82,11 +82,6 @@ static cl::list<std::string>
 
 namespace llvm {
 extern cl::opt<bool> NoPGOWarnMismatch;
-
-cl::opt<std::string>
-    LTOStackUsageFile("lto-stack-usage-file",
-                      cl::desc("Output filename for stack usage information"),
-                      cl::value_desc("filename"), cl::Hidden);
 }
 
 [[noreturn]] static void reportOpenError(StringRef Path, Twine Msg) {
@@ -452,9 +447,6 @@ static void codegen(const Config &Conf, TargetMachine *TM,
       report_fatal_error(Twine("Failed to open ") + DwoFile + ": " +
                          EC.message());
   }
-
-  if (!Conf.StackUsageFile.empty())
-    TM->Options.StackUsageFile = Conf.StackUsageFile;
 
   Expected<std::unique_ptr<CachedFileStream>> StreamOrErr =
       AddStream(Task, Mod.getModuleIdentifier());

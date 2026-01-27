@@ -37,10 +37,6 @@ using namespace lto;
 
 static codegen::RegisterCodeGenFlags CGF;
 
-namespace llvm {
-extern cl::opt<std::string> LTOStackUsageFile;
-}
-
 static cl::opt<char>
     OptLevel("O",
              cl::desc("Optimization level. [-O0, -O1, -O2, or -O3] "
@@ -394,7 +390,6 @@ static int run(int argc, char **argv) {
   Conf.OverrideTriple = OverrideTriple;
   Conf.DefaultTriple = DefaultTriple;
   Conf.StatsFile = StatsFile;
-  Conf.StackUsageFile = LTOStackUsageFile;
   Conf.PTO.LoopVectorization = Conf.OptLevel > 1;
   Conf.PTO.SLPVectorization = Conf.OptLevel > 1;
 

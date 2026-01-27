@@ -272,9 +272,6 @@ struct Configuration {
   // Used for /lto-obj-path:
   llvm::StringRef ltoObjPath;
 
-  // Used for /lto-stack-usage-file:
-  llvm::StringRef ltoStackUsageFile;
-
   // Used for /lto-cs-profile-generate:
   bool ltoCSProfileGenerate = false;
 

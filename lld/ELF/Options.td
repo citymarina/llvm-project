@@ -689,8 +689,6 @@ def opt_remarks_with_hotness: FF<"opt-remarks-with-hotness">,
   HelpText<"Include hotness information in the optimization remarks file">;
 def opt_remarks_format: Separate<["--"], "opt-remarks-format">,
   HelpText<"The format used for serializing remarks (default: YAML)">;
-def lto_stack_usage_file: JJ<"lto-stack-usage-file=">,
-  HelpText<"Stack usage output file path for LTO">;
 def save_temps: F<"save-temps">, HelpText<"Save intermediate LTO compilation results">;
 def save_temps_eq: JJ<"save-temps=">, HelpText<"Save select intermediate LTO compilation results">,
   Values<"resolution,preopt,promote,internalize,import,opt,precodegen,prelink,combinedindex">;

@@ -1040,10 +1040,6 @@ def object_path_lto : Separate<["-"], "object_path_lto">,
     MetaVarName<"<path>">,
     HelpText<"Retain any temporary mach-o file in <path> that would otherwise be deleted during LTO">,
     Group<grp_rare>;
-def lto_stack_usage_file : Separate<["-"], "lto_stack_usage_file">,
-    MetaVarName<"<path>">,
-    HelpText<"Write stack usage information for LTO to <path>">,
-    Group<grp_rare>;
 def cache_path_lto : Separate<["-"], "cache_path_lto">,
     MetaVarName<"<path>">,
     HelpText<"Use <path> as a directory for the incremental LTO cache">,

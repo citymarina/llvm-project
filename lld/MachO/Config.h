@@ -169,7 +169,6 @@ struct Configuration {
   llvm::StringRef mapFile;
   llvm::StringRef ltoNewPmPasses;
   llvm::StringRef ltoObjPath;
-  llvm::StringRef ltoStackUsageFile;
   llvm::StringRef thinLTOJobs;
   llvm::StringRef umbrella;
   uint32_t ltoo = 2;

@@ -660,13 +660,13 @@ void darwin::Linker::ConstructJob(Compilation &C, const JobAction &JA,
     CmdArgs.push_back(Args.MakeArgString("-lto-stats-file=" + StatsFile.str()));
   }
 
-  // Set up stack usage output file for LTO.
+  // Set up stack usage output file.
   if (Args.hasArg(options::OPT_fstack_usage)) {
     SmallString<128> StackUsageFile(Output.getFilename());
     llvm::sys::path::replace_extension(StackUsageFile, "su");
     CmdArgs.push_back("-mllvm");
     CmdArgs.push_back(
-        Args.MakeArgString("-lto-stack-usage-file=" + StackUsageFile));
+        Args.MakeArgString("-stack-usage-file=" + StackUsageFile));
   }
 
   // It seems that the 'e' option is completely ignored for dynamic executables

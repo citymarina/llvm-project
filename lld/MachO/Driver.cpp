@@ -1929,7 +1929,6 @@ bool link(ArrayRef<const char *> argsArr, llvm::raw_ostream &stdoutOS,
     config->umbrella = arg->getValue();
   }
   config->ltoObjPath = args.getLastArgValue(OPT_object_path_lto);
-  config->ltoStackUsageFile = args.getLastArgValue(OPT_lto_stack_usage_file);
   config->ltoNewPmPasses = args.getLastArgValue(OPT_lto_newpm_passes);
   config->thinLTOCacheDir = args.getLastArgValue(OPT_cache_path_lto);
   config->thinLTOCachePolicy = getLTOCachePolicy(args);
