@@ -37,6 +37,10 @@ using namespace lto;
 
 static codegen::RegisterCodeGenFlags CGF;
 
+namespace llvm {
+extern cl::opt<std::string> LTOStackUsageFile;
+}
+
 static cl::opt<char>
     OptLevel("O",
              cl::desc("Optimization level. [-O0, -O1, -O2, or -O3] "
@@ -201,10 +205,6 @@ static cl::opt<bool>
 
 static cl::opt<std::string>
     StatsFile("stats-file", cl::desc("Filename to write statistics to"));
-
-static cl::opt<std::string>
-    StackUsageFileFilename("lto-stack-usage-file",
-                           cl::desc("Filename to write stack usage info to"));
 
 static cl::list<std::string>
     PassPlugins("load-pass-plugin",
@@ -394,7 +394,7 @@ static int run(int argc, char **argv) {
   Conf.OverrideTriple = OverrideTriple;
   Conf.DefaultTriple = DefaultTriple;
   Conf.StatsFile = StatsFile;
-  Conf.StackUsageFile = StackUsageFileFilename;
+  Conf.StackUsageFile = LTOStackUsageFile;
   Conf.PTO.LoopVectorization = Conf.OptLevel > 1;
   Conf.PTO.SLPVectorization = Conf.OptLevel > 1;
 
